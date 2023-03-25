@@ -1,0 +1,70 @@
+<div class="row w-100 px-2 py-2 mt-1 mb-2 bg-white" >
+    <h3>Staff Attendance</h3>
+    </div>
+
+    
+    
+    <div class="row w-100 p-3 bg-white mt-2" >
+        <div class="w-100 d-flex justify-content-start mb-2">
+            <div class="px-1 d-flex">
+                <div class="px-2">
+                    <label>* Choose Date For Attendance</label>
+                </div>
+                <div class="px-2">
+                    <input type="date" class="form-control" [(ngModel)]="date">
+                </div>
+                <div class="px-2 d-flex mr-auto">
+                <div class="px-2">
+                    <label>Present/Absent</label>
+                    </div>
+                <div class="px-2">
+                    <input type="checkbox" class="form-check" [(ngModel)]="present">
+                    </div>
+                </div>
+                <div class="px-2 ml-auto">
+                    <button class="btn btn-primary" (click)="submit()">Submit Attendance</button>
+
+                </div>
+                <!-- <button class="btn btn-primary px-2" ><i class="fa fa-plus" aria-hidden="true" ></i> &nbsp;New Student</button> -->
+            </div>
+        </div>
+        <table class="table table-striped table-responsive" id="enquiresList">
+            <thead>
+                <tr style="border-bottom: 2px solid #e2e7f1 !important; background-color: #323742; color: #fff;">
+                    <th style="min-width: 65px;">Sr No</th>
+                    <th style="min-width: 200px">Date</th>
+                    <th style="min-width: 150px">Present</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr *ngFor="let item of allMedicalWord | paginate: { id: 'foo',
+              itemsPerPage: 10,
+              currentPage: page,
+              totalItems: totalRecords } ;let i =index">
+                    <td>{{ page == 1 ? i + 1 : i == 9 ? (page+''+0):((page-1)+''+(i+1))}}</td>
+                    <td>{{item.text}}</td>
+                    <td>{{item.date.split('-')[2]+'-'+item.date.split('-')[1]+'-'+item.date.split('-')[0]}}</td>
+                    <td>{{item.created_at | date}}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteMedical(item)">Delete</button>
+                    </td>
+               </tr> -->
+               <tr *ngFor="let item of staffAttendance;let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{item.date}}</td>
+                <td>{{item.status}}</td>
+                <!-- <td>
+                    <input type="checkbox" class="form-check" [(ngModel)]="item.check">
+                </td> -->
+               </tr>
+            
+            </tbody>
+        </table>
+
+    </div>
+  
+
+    <!-- <div class="py-2 bg-white text-right">
+        <pagination-controls (pageChange)="pageChange($event)" id="foo" maxsize="5" [directionLinks]="true"></pagination-controls>
+    </div> -->
+    

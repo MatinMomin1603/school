@@ -1,0 +1,71 @@
+
+
+<section>
+    <div class="row w-100 px-2 py-2 mt-1 mb-2 bg-white" >
+        <h3>Profile</h3>
+        </div>
+
+        <div class="row w-100 p-3 bg-white mt-2" >
+            <div class="W-100">
+                <h3>Personal Details</h3>
+                <hr>
+            </div>
+            <div class="W-100 mb-3">
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <label style="font-size: 17px;">First Name</label>
+                        <h4 class="mb-2 br-input">{{this.userData.data.first_name}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-2" *ngIf="this.userData.type != 'admin'">
+                        <label style="font-size: 17px;">Middle Name</label>
+                        <h4 class="mb-2 br-input">{{this.userData.data.middle_name}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <label style="font-size: 17px;">Last Name</label>
+                        <h4 class="mb-2 br-input">{{this.userData.data.last_name}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-2" *ngIf="this.userData.type != 'admin'">
+                        <label style="font-size: 17px;">Gender</label>
+                        <h4 class="mb-2 br-input">{{this.userData.data.gender}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <label style="font-size: 17px;">Phone Number</label>
+                        <h4 class="mb-2 br-input" *ngIf="this.userData.type != 'student'">{{this.userData.data.phone_number}}</h4>
+                        <h4 class="mb-2 br-input" *ngIf="this.userData.type == 'student'">{{this.userData.data.parent_number}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-2" *ngIf="this.userData.type != 'admin'">
+                        <label style="font-size: 17px;">Date Of Birth</label>
+                        <h4 class="mb-2 br-input">{{this.userData.data.phone_number}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="W-100">
+                <h3>Residential Details</h3>
+                <hr>
+            </div>
+            <div class="W-100 mb-3">
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <label style="font-size: 17px;">Address</label>
+                        <h4 class="mb-2 br-input">{{this.userData.data.address}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="W-100">
+                <h3>User</h3>
+                <hr>
+            </div>
+            <div class="W-100 mb-3">
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <label style="font-size: 17px;">User Type</label>
+                        <h4 class="mb-2 br-input">{{this.userData.type.toUpperCase()}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+</section>
+
+

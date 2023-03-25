@@ -1,0 +1,209 @@
+<app-default-layout>
+    <div class="auth-logo mx-auto">
+        <a [routerLink]="['../../dashboard/students-info']" class="logo logo-dark text-center">
+            <span class="logo-lg">
+                <img src="../../../assets/images/graduation-white-background_24908-61006.avif" alt="" height="100">
+            </span>
+        </a>
+
+        <a [routerLink]="['../../dashboard/students-info']" class="logo logo-light text-center">
+            <span class="logo-lg">
+                <img src="../../../assets/images/graduation-white-background_24908-61006.avif" alt="" height="100">
+            </span>
+        </a>
+    </div>
+    <h6 class="h5 mb-0 mt-3" i18n>Welcome back!</h6>
+    <p class="text-muted mt-1 mb-4" i18n>
+        Enter your email address and password to access school panel.
+    </p>
+
+    <!-- <form name="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="authentication-form">
+
+        <ngb-alert type="danger" *ngIf="error" [dismissible]="false">{{ error }}</ngb-alert>
+
+        <div class="mb-3">
+            <div class="d-flex">
+            <div class="px-1 flex-fill">
+                <label class="form-label" i18n>Admin</label> &nbsp;&nbsp;
+                <input type="radio"  name="logintype" value="admin" formControlName="logintype" required (click)="checkValues('admin')">
+            </div>
+            <div class="px-1 flex-fill">
+                <label class="form-label" i18n>Staff</label> &nbsp;&nbsp;
+                <input type="radio"  name="logintype" value="staff" formControlName="logintype" required (click)="checkValues('staff')">
+            </div>
+            <div class="px-1 flex-fill">
+                <label class="form-label" i18n>Student</label> &nbsp;&nbsp;
+                <input type="radio"  name="logintype" value="student" formControlName="logintype" required (click)="checkValues('student')">
+            </div>
+            </div>
+            <div *ngIf="formSubmitted && formValues.logintype.invalid" class="invalid-feedback" >
+
+                <div *ngIf="formValues.logintype.errors?.required" i18n>
+                    Login type is required.
+                </div>
+             
+
+            </div>
+            
+        </div>
+        <div class="mb-3">
+            <label class="form-label" i18n *ngIf="logintype == 'admin'">Email Address</label>
+            <label class="form-label" i18n *ngIf="logintype == 'staff'">Phone number</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="icon-dual" data-feather="mail" appFeatherIcon></i>
+                </span>
+                <input type="email" class="form-control" id="email" placeholder="abc@gmail.com"
+                    formControlName="email" [ngClass]="{'is-invalid': formSubmitted && formValues.email.invalid}"
+                    required>
+
+                <div *ngIf="formSubmitted && formValues.email.invalid" class="invalid-feedback">
+
+                    <div *ngIf="formValues.email.errors?.required" i18n>
+                        Email is required.
+                    </div>
+                    <div *ngIf="formValues.email.errors?.email" i18n>
+                        Email must be a valid Email Address
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" i18n>Password</label>
+            <a [routerLink]="['../recover-password']" class="float-end text-muted text-unline-dashed ms-1">Forgot your
+                password?</a>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="icon-dual" data-feather="lock"></i>
+                </span>
+                <input type="password" class="form-control" id="password" i18n-placeholder
+                    placeholder="Enter your password" formControlName="password" required minlength="4"
+                    [ngClass]="{'is-invalid': formSubmitted && formValues.password.invalid}">
+
+
+                <div *ngIf="formSubmitted && formValues.password.invalid" class="invalid-feedback">
+
+                    <div *ngIf="formValues.password.errors?.required" i18n>
+                        Password is required.
+                    </div>
+                    <div *ngIf="formValues.password.errors?.minlength" i18n>
+                        Password length must be greater than 3.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
+                <label class="form-check-label" for="checkbox-signin" i18n>Remember me</label>
+            </div>
+        </div>
+
+        <div class="mb-3 text-center d-grid">
+            <button class="btn btn-primary" type="submit" i18n>Log In</button>
+        </div>
+    </form> -->
+
+    <div class="W-100">
+        <div class="mb-3">
+            <div class="d-flex">
+            <div class="px-1 flex-fill">
+                <label class="form-label" i18n>Admin</label> &nbsp;&nbsp;
+                <input type="radio"  name="logintype" value="admin" [(ngModel)]="logintype" required (click)="checkValues(logintype)">
+            </div>
+            <div class="px-1 flex-fill">
+                <label class="form-label" i18n>Staff</label> &nbsp;&nbsp;
+                <input type="radio"  name="logintype" value="staff"   [(ngModel)]="logintype"  required (click)="checkValues(logintype)">
+            </div>
+            <div class="px-1 flex-fill">
+                <label class="form-label" i18n>Student</label> &nbsp;&nbsp;
+                <input type="radio"  name="logintype" value="student"   [(ngModel)]="logintype"  required (click)="checkValues(logintype)">
+            </div>
+            </div>
+        </div>
+
+        <div class="mb-3" *ngIf="logintype == 'student'">
+            <label class="form-label" >Class</label>
+            <div class="input-group">
+                <select class="form-select" [(ngModel)]="class_id">
+                    <option value="" hidden selected>Select Class</option>
+                    <option  *ngFor="let item of allClass" value="{{item._id}}">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label"  *ngIf="logintype == 'admin'">Email Address</label>
+            <label class="form-label"  *ngIf="logintype == 'staff'">Phone Number</label>
+            <label class="form-label"  *ngIf="logintype == 'student'">Roll Number</label>
+            <div class="input-group">
+                <!-- <span class="input-group-text">
+                    <i class="icon-dual"  *ngIf="logintype == 'admin'" data-feather="mail" appFeatherIcon></i>
+                    <i class="icon-dual"  *ngIf="logintype == 'staff'" data-feather="phone" appFeatherIcon></i>
+                    <i class="icon-dual"  *ngIf="logintype == 'student'" data-feather="user" appFeatherIcon></i>
+                </span> -->
+                <input type="email" class="form-control" id="email" placeholder="abc@gmail.com"
+                    [(ngModel)]="email" >
+
+                <!-- <div *ngIf="formSubmitted && formValues.email.invalid" class="invalid-feedback">
+
+                    <div *ngIf="formValues.email.errors?.required" i18n>
+                        Email is required.
+                    </div>
+                    <div *ngIf="formValues.email.errors?.email" i18n>
+                        Email must be a valid Email Address
+                    </div>
+
+                </div> -->
+            </div>
+        </div>
+     
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <div class="input-group">
+                <!-- <span class="input-group-text">
+                    <i class="icon-dual" data-feather="lock"></i>
+                </span> -->
+                <input type="password" class="form-control" id="password" 
+                    placeholder="Enter your password" [(ngModel)]="password" 
+                    >
+
+
+                <!-- <div *ngIf="formSubmitted && formValues.password.invalid" class="invalid-feedback">
+
+                    <div *ngIf="formValues.password.errors?.required" i18n>
+                        Password is required.
+                    </div>
+                    <div *ngIf="formValues.password.errors?.minlength" i18n>
+                        Password length must be greater than 3.
+                    </div>
+
+                </div> -->
+            </div>
+        </div>
+
+        <div class="mb-3 text-center d-grid">
+            <button class="btn btn-primary" (click)="onSubmit()">Log In</button>
+        </div>
+
+
+    </div>
+    <div class="py-3 text-center d-none"><span class="fs-16 fw-bold">OR</span></div>
+    <div class="row d-none">
+        <div class="col-12 text-center">
+            <a href="" class="btn btn-white mb-2 mb-sm-0 me-1"><i class='uil uil-google icon-google me-2'></i>With
+                Google</a>
+            <a href="" class="btn btn-white mb-2 mb-sm-0"><i class='uil uil-facebook me-2 icon-fb'></i>With Facebook</a>
+        </div>
+    </div>
+
+    <p class="text-muted" footerLink i18n>Don't have an account? <a [routerLink]="['../register']"
+            class="text-primary fw-bold ms-1">Sign Up</a>
+    </p>
+
+</app-default-layout>
