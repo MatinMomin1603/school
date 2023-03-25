@@ -42,7 +42,8 @@ export class FeeStructureComponent implements OnInit {
     Notiflix.Loading.arrows();
      let data = {
       class_id: this.class_id,
-      amount: this.fee
+      amount: this.fee * 1,
+      student_id: this.roll_no
      }
      this.api.addFeeStructure(data).subscribe((res:any)=>{
     Notiflix.Loading.remove();
