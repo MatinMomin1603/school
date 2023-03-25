@@ -86,7 +86,8 @@ export class ApiServiceService {
   }
 
   addFeeStructure(data:any){
-    return this.http.post(EBase.Url+'/admin/fees',JSON.stringify(data)).pipe(map(results => results));
+    // return this.http.post(EBase.Url+'/admin/fees',JSON.stringify(data)).pipe(map(results => results));
+    return this.http.post(EBase.Url+'/student/fees',JSON.stringify(data)).pipe(map(results => results));
   }
 
   updateFeeStructure(data:any){

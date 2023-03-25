@@ -48,7 +48,7 @@ export class FeeStructureComponent implements OnInit {
      this.api.addFeeStructure(data).subscribe((res:any)=>{
     Notiflix.Loading.remove();
       if(res.status){
-         this.modalService.dismissAll();
+         this.modalService.dismissAll();this.getAllFees();
         Notiflix.Notify.success("Fee Added Successfully..");
       }else{
         Notiflix.Notify.failure("Something Went Wrong, Please Try Again..")
