@@ -22,15 +22,17 @@ export class StudentAttendanceComponent implements OnInit {
     this.currentUser = sessionStorage.getItem('currentUser');
     this.currentUser = JSON.parse(this.currentUser);
     console.log('this.currentUser  :', this.currentUser );
-  this.getClasses()
+  this.getClasses();
+  if(this.currentUser.type == 'student'){
+    this.getIndiStudentAtten(this.currentUser.data._id);
+  }
 
   }
 
 
   viewAttendance(){
     Notiflix.Loading.arrows();
-    let std_id = this.currentUser.data.type == 'student' ? this.currentUser.data._id : '';
-this.api.getStdAttendance(this.date,this.class_id,std_id).subscribe((res:any)=>{
+this.api.getStdAttendance(this.date,this.class_id).subscribe((res:any)=>{
   Notiflix.Loading.remove();
   if(res.status){
       this.allStudentAtt = res.data.attendance;
@@ -52,7 +54,29 @@ this.api.getStdAttendance(this.date,this.class_id,std_id).subscribe((res:any)=>{
 })
   }
 
-
+  getIndiStudentAtten(id:any){
+    Notiflix.Loading.arrows();
+    this.api.getIndiStudentAtten(id).subscribe((res:any)=>{
+      Notiflix.Loading.remove();
+      if(res.status){
+          this.allStudentAtt = res.data;
+          this.allStudentAtt.forEach((element:any) => {
+            if(element.status == 'present'){
+               element.check = true
+              }
+              else{
+              element.false = true
+    
+            }
+          });
+          if(!(this.allStudentAtt.length > 0)){
+            Notiflix.Notify.failure("Data Not Found, Please Try Again..")
+          }
+        }else{
+          Notiflix.Notify.failure("Something Went Wrong, Please Try Again..")
+        }
+    })
+  }
   submit(){
     Notiflix.Loading.arrows();
   let attendance:any = [];

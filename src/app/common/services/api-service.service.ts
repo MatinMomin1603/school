@@ -113,8 +113,11 @@ export class ApiServiceService {
     return this.http.post(EBase.Url+'/student/attendance',JSON.stringify(data)).pipe(map(results => results));
   }
 
-  getStdAttendance(date:any,class_id:any,_id:any){
-    return this.http.get(EBase.Url+'/student/attendance/'+date+'/'+class_id+'/'+_id).pipe(map(results => results));
+  getStdAttendance(date:any,class_id:any){
+    return this.http.get(EBase.Url+'/student/attendance/'+date+'/'+class_id).pipe(map(results => results));
+  }
+  getIndiStudentAtten(_id:any){
+    return this.http.get(EBase.Url+'/student/attendance/'+_id).pipe(map(results => results));
   }
 
   addStudent(data:any){
