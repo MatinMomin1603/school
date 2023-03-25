@@ -95,7 +95,7 @@
             </li>
 
             <li class="d-lg-inline-block topbar-dropdown" ngbDropdown *ngIf="currentUserName.type == 'admin'">
-                <button class="btn btn-info" style="margin-top: 15px;" (click)="openModal(content)">View Balance</button>
+                <button class="btn btn-info" style="margin-top: 15px;" (click)="getBalance();openModal(content)">View Balance</button>
             </li>
 
             <li class="notification-list topbar-dropdown" ngbDropdown style="display: none !important;">
