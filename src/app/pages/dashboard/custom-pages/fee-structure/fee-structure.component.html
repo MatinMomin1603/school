@@ -53,9 +53,9 @@
                         </select>
                     </div>
                     <div class="w-100 mb-3">
-                        <label>Roll No</label>
+                        <label>Student</label>
                         <select [(ngModel)]="roll_no" class="form-select" (change)="getStudentFees()">
-                            <option value="" selected hidden>Select Roll No</option>
+                            <option value="" selected hidden>Select Student</option>
                             <option *ngFor="let item of allStudent" value="{{item._id}}">{{item.first_name+' '+item.last_name}}</option>
                         </select>
                     </div>

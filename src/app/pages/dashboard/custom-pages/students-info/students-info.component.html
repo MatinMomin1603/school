@@ -14,10 +14,12 @@
             <thead>
                 <tr style="border-bottom: 2px solid #e2e7f1 !important; background-color: #323742; color: #fff;">
                     <th style="min-width: 65px;">Sr No</th>
+                    <th style="min-width: 65px;">Roll No</th>
                     <th style="min-width: 200px">Full Name</th>
                     <th style="min-width: 150px">Current Class</th>
                     <th style="min-width: 150px">Gender</th>
                     <th style="min-width: 150px">Phone No</th>
+                    <th style="min-width: 150px">Password</th>
                     <th style="min-width: 150px" *ngIf="currentUser.type == 'admin'">Action</th>
                 </tr>
             </thead>
@@ -36,10 +38,12 @@
                </tr> -->
                <tr *ngFor="let item of allStudents; let i = index;">
                 <td>{{i + 1}}</td>
+                <td>{{item.roll_number}}</td>
                 <td>{{item.first_name + ' '+ item.middle_name + ' ' + item.last_name}}</td>
                 <td>{{item.class}}</td>
                 <td>{{item.gender}}</td>
                 <td>{{item.parent_number}}</td>
+                <td>{{item.password}}</td>
                 <td class="d-flex" *ngIf="currentUser.type == 'admin'">
                         <div class="icon-primary px-2 pointer" (click)="edit(item)"><i class="fa fa-edit icon-primary f-17"></i></div>
                         <div class="icon-primary px-2 pointer" (click)="delete(item)"><i class="fa fa-trash icon-primary f-17"></i></div>

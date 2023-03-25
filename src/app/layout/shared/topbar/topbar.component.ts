@@ -57,8 +57,8 @@ export class TopbarComponent implements OnInit {
     this._fetchProfileOptions();
     this.getBalance()
     let data:any = sessionStorage.getItem("currentUserName")
-    console.log('data :', data);
-    this.currentUserName = data;
+    this.currentUserName = JSON.parse(data);
+    console.log('type :', this.currentUserName.type);
     this.loggedInUser = JSON.parse(data);
     console.log('this.loggedInUser :', this.loggedInUser['email']);
     // this.loggedInUser = this.authService.currentUser();
