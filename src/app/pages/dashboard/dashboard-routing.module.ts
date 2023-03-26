@@ -17,6 +17,8 @@ import { StaffAttendanceComponent } from './custom-pages/staff-attendance/staff-
 import { FeeStructureComponent } from './custom-pages/fee-structure/fee-structure.component';
 import { PayOutComponent } from './custom-pages/pay-out/pay-out.component';
 import { ProfileComponent } from './custom-pages/profile/profile.component';
+import { ViewStudentAttendanceComponent } from './custom-pages/view-student-attendance/view-student-attendance.component';
+import { ClassPerformanceComponent } from './custom-pages/class-performance/class-performance.component';
 
 
 const routes: Routes = [{
@@ -33,11 +35,13 @@ const routes: Routes = [{
 { path: 'classes',  component: ClassesComponent },
 { path: 'subjects',  component: SubjectsComponent },
 { path: 'invioces',  component: InviocesComponent },
-{ path: 'student-attendance',  component: StudentAttendanceComponent },
+{ path: 'mark-student-attendance',  component: StudentAttendanceComponent },
+{ path: 'view-student-attendance',  component: ViewStudentAttendanceComponent },
 { path: 'staff-attendance',  component: StaffAttendanceComponent },
 { path: 'fee-structure',  component: FeeStructureComponent },
 { path: 'pay-out',  component: PayOutComponent },
 { path: 'profile',  component: ProfileComponent },
+{ path: 'class-performance',  component: ClassPerformanceComponent },
 {
   path: 'analytics',
   loadChildren: () => import('./analytics/analytics.module').then(m => m.AnalyticsModule)

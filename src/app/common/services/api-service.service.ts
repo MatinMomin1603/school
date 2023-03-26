@@ -117,6 +117,11 @@ export class ApiServiceService {
   getStdAttendance(date:any,class_id:any){
     return this.http.get(EBase.Url+'/student/attendance/'+date+'/'+class_id).pipe(map(results => results));
   }
+
+  getStdAttendanceView(){
+    return this.http.get(EBase.Url+'/student/attendance/').pipe(map(results => results));
+  }
+
   getIndiStudentAtten(_id:any){
     return this.http.get(EBase.Url+'/student/attendance/'+_id).pipe(map(results => results));
   }
@@ -188,6 +193,10 @@ export class ApiServiceService {
 
   getBalance(){
     return this.http.get(EBase.Url+'/admin/balance').pipe(map(results => results));
+  }
+ 
+  getclassWisePerformance(class_id:any){
+    return this.http.get(EBase.Url+'/admin/mark/report?class_id='+class_id).pipe(map(results => results));
   }
 
 

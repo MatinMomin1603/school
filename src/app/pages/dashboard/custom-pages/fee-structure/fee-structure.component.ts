@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiServiceService } from '../../../../common/services/api-service.service';
 import Notiflix from 'notiflix';
+import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
+(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-fee-structure',
   templateUrl: './fee-structure.component.html',
@@ -15,6 +18,7 @@ export class FeeStructureComponent implements OnInit {
   fee:any = '';
   roll_no:any = '';
   remain_fee:any = '';
+  category:any = '';
   allFees:any = [];
   allClasses:any = [];
   allStudent:any = [];
@@ -43,7 +47,8 @@ export class FeeStructureComponent implements OnInit {
      let data = {
       class_id: this.class_id,
       amount: this.fee * 1,
-      student_id: this.roll_no
+      student_id: this.roll_no,
+      category: this.category
      }
      this.api.addFeeStructure(data).subscribe((res:any)=>{
     Notiflix.Loading.remove();
@@ -138,4 +143,77 @@ export class FeeStructureComponent implements OnInit {
           }
         })
       }
+
+  downloadIndiVidual(data:any){
+    let bodyData:any = [
+      [{text: 'Sr No',style: 'tableHeader'},{text: 'Student Name',style: 'tableHeader'},{text: 'Class',style: 'tableHeader'},{text: 'Category',style: 'tableHeader'},{text: 'Fee',style: 'tableHeader'},{text: 'Date',style: 'tableHeader'}]
+    ];
+    bodyData.push(['1',data.name ? data.name : '',data.class_name ? data.class_name: '',data.category ? data.category: '',data.amount ? data.amount: '',data.created_at ? data.created_at.slice(0,10): '']);
+    
+    this.pdfDownload(bodyData);
+    }
+
+  downloadPdf(){
+    if(this.allFees.length > 0){
+    let bodyData:any = [
+      [{text: 'Sr No',style: 'tableHeader'},{text: 'Student Name',style: 'tableHeader'},{text: 'Class',style: 'tableHeader'},{text: 'Category',style: 'tableHeader'},{text: 'Fee',style: 'tableHeader'},{text: 'Date',style: 'tableHeader'}]
+    ];
+    this.allFees.forEach((element:any,key:any) => {
+      bodyData.push(['1',element.name ? element.name : '',element.class_name ? element.class_name: '',element.category ? element.category: '',element.amount ? element.amount: '',element.created_at ? element.created_at.slice(0,10): '']);
+    });
+    
+    this.pdfDownload(bodyData);
+  }
+    }
+
+    pdfDownload(data:any){
+      var dd:any = {
+        pageSize: 'A4',
+          pageMargins: [15, 15, 15, 15],
+          pageOrientation: 'portrait',
+          pageBreakBefore: 1,
+            footer: {
+        columns: [
+          { text: "Little Heart's School Pethvadgaon, Kolhapur", alignment: 'center' }
+        ]
+      },
+      content: [
+        {text: "Little Herat's School\n Pethvadgaon",style:'title' },
+        ,{
+          
+          style: 'tableExample',
+          table: {
+              widths: ['*','*','*','*','*','*'],
+            body: data,
+          
+          },
+          layout: {
+            fillColor: function (rowIndex:any, node:any, columnIndex:any) {
+              return (rowIndex  === 0) ? '#323742' : null;
+            }
+          }
+        
+      }
+      ],
+      styles: {
+          title: {
+              color: 'black',
+              bold: true,
+              fontSize: 19,alignment: 'center'
+          },
+          tableExample:{
+             // alignment: 'center'
+             margin:[0,50,0,0]
+          },
+          tableHeader:{
+            color: 'white',
+            bold: true,
+              margin: [12,5]
+          }
+      }
+      
+      }
+      
+      pdfMake.createPdf(dd).open();
+    }
 }

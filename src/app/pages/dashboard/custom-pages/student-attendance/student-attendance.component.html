@@ -1,5 +1,5 @@
 <div class="row w-100 px-2 py-2 mt-1 mb-2 bg-white" >
-    <h3>Student Attendance</h3>
+    <h3>Mark Student Attendance</h3>
 </div>
 
     
@@ -48,7 +48,7 @@
                <tr *ngFor="let item of allStudentAtt; let i = index">
                 <td>{{i + 1}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.date}}</td>
+                <td>{{item.created_at.split(' ')[0]}}</td>
                 <td>
                     <input type="checkbox" class="form-check" [(ngModel)]="item.check" disabled="{{this.currentUser.type == 'student'}}">
                 </td>

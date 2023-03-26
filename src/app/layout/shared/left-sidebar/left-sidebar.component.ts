@@ -105,16 +105,37 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                             link: '/dashboard/create-result',
                             icon: 'book',
                             parentKey: 'apps-result',
-                        }                   
+                        },
+                        {
+                          key: 'apps-class-performance',
+                          label: '  Classwise Performance',
+                          link: '/dashboard/class-performance',
+                          icon: 'book',
+                          parentKey: 'apps-result',
+                      },                
                     ]
         },
         {
-                key: 'apps-student-attendance',
-                label: 'Attendance',
-                isTitle: false,
-                icon: 'book',
-                link: '/dashboard/student-attendance',
-        },
+          key: 'apps-student-attendance',
+          label: 'Attendance',
+          isTitle: false,
+          icon: 'book',
+          link: '/dashboard',
+          children: [
+            {
+                key: 'apps-view-attendance',
+                label: '  View Attendance',
+                link: '/dashboard/view-student-attendance',
+                parentKey: 'apps-student-attendance',
+            },
+            {
+                key: 'apps-mark-attendance',
+                label: '  Mark Attendance',
+                link: '/dashboard/mark-student-attendance',
+                parentKey: 'apps-student-attendance',
+            }
+        ]
+  },
         // {
         //         key: 'apps-staff-attendance',
         //         label: 'Staff Attendance',
@@ -230,6 +251,13 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                             icon: 'book',
                             parentKey: 'apps-result',
                         },
+                        {
+                          key: 'apps-class-performance',
+                          label: '  Classwise Performance',
+                          link: '/dashboard/class-performance',
+                          icon: 'book',
+                          parentKey: 'apps-result',
+                      },
                         // {
                         //     key: 'apps-update-result',
                         //     label: '  Update Result',
@@ -247,12 +275,26 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                     ]
         },
         {
-                key: 'apps-student-attendance',
-                label: 'Attendance',
-                isTitle: false,
-                icon: 'book',
-                link: '/dashboard/student-attendance',
-        },
+          key: 'apps-student-attendance',
+          label: 'Attendance',
+          isTitle: false,
+          icon: 'book',
+          link: '/dashboard',
+          children: [
+            {
+                key: 'apps-view-attendance',
+                label: '  View Attendance',
+                link: '/dashboard/view-student-attendance',
+                parentKey: 'apps-student-attendance',
+            },
+            {
+                key: 'apps-mark-attendance',
+                label: '  Mark Attendance',
+                link: '/dashboard/mark-student-attendance',
+                parentKey: 'apps-student-attendance',
+            }
+        ]
+  },
         {
                 key: 'apps-staff-attendance',
                 label: 'Staff Attendance',
@@ -354,13 +396,7 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                             icon: 'book',
                             parentKey: 'apps-result',
                         },
-                        // {
-                        //     key: 'apps-update-result',
-                        //     label: '  Update Result',
-                        //     link: '/dashboard/update-result',
-                        //     icon: 'book',
-                        //     parentKey: 'apps-result',
-                        // },
+                       
                         // {
                         //     key: 'apps-view-result',
                         //     label: '  View Result',
@@ -375,7 +411,21 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                 label: 'Attendance',
                 isTitle: false,
                 icon: 'book',
-                link: '/dashboard/student-attendance',
+                link: '/dashboard',
+                children: [
+                  {
+                      key: 'apps-view-attendance',
+                      label: '  View Attendance',
+                      link: '/dashboard/view-student-attendance',
+                      parentKey: 'apps-student-attendance',
+                  },
+                  // {
+                  //     key: 'apps-mark-attendance',
+                  //     label: '  Mark Attendance',
+                  //     link: '/dashboard/mark-student-attendance',
+                  //     parentKey: 'apps-student-attendance',
+                  // }
+              ]
         },
         // {
         //         key: 'apps-staff-attendance',

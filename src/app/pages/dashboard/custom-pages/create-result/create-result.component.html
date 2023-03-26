@@ -55,7 +55,7 @@
                 <div class="col-lg-6 col-md-6 col-xs-12 mb-2">
                     <label for="geclassnder" class="mb-1 f-15">Term </label>
                     <select name="current_class" id="current_class" class="form-select" [(ngModel)]="term_id" (change)="getSubject()">
-                        <option value="" selected hidden>Selcted Class</option>
+                        <option value="" selected hidden>Selcted Term</option>
                         <option *ngFor="let item of allTerm" value="{{item._id}}">{{item.name}}</option>
                     </select>
                 </div>
