@@ -19,6 +19,7 @@ import { PayOutComponent } from './custom-pages/pay-out/pay-out.component';
 import { ProfileComponent } from './custom-pages/profile/profile.component';
 import { ViewStudentAttendanceComponent } from './custom-pages/view-student-attendance/view-student-attendance.component';
 import { ClassPerformanceComponent } from './custom-pages/class-performance/class-performance.component';
+import { PredictionComponent } from './custom-pages/prediction/prediction.component';
 
 
 const routes: Routes = [{
@@ -42,6 +43,7 @@ const routes: Routes = [{
 { path: 'pay-out',  component: PayOutComponent },
 { path: 'profile',  component: ProfileComponent },
 { path: 'class-performance',  component: ClassPerformanceComponent },
+{ path: 'prediction',  component: PredictionComponent },
 {
   path: 'analytics',
   loadChildren: () => import('./analytics/analytics.module').then(m => m.AnalyticsModule)

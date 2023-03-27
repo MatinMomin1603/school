@@ -199,7 +199,14 @@ export class ApiServiceService {
     return this.http.get(EBase.Url+'/admin/mark/report?class_id='+class_id).pipe(map(results => results));
   }
 
+  addPrediction(data:any){
+    return this.http.post(EBase.Url+'/prediction',JSON.stringify(data)).pipe(map(results => results));
+  }
+  
+  getPerformancePDF(id:any,class_id:any){
+    return this.http.get(EBase.Url+'/student/performance/'+id+'/'+class_id).pipe(map(results => results));
 
+  }
 
 
 

@@ -1,0 +1,58 @@
+<div class="row w-100 px-2 py-2 mt-1 mb-2 bg-white" >
+    <h3>Prediction</h3>
+    </div>
+
+    
+  
+    <div class="row w-100 p-3 bg-white mt-2" >
+        <div class="w-100">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12 mb-2">
+                   <label for="current_mark" class="mb-1 f-15">Current Mark</label>
+                   <input type="text" class="form-control" name="current_mark" [(ngModel)]="current_mark">
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12 mb-2">
+                   <label for="attendance" class="mb-1 f-15">Attendance in percentage</label>
+                   <input type="text" class="form-control" name="attendance" [(ngModel)]="attendance">
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12 mb-2">
+                   <label for="gender" class="mb-1 f-15">Extra Activies</label>
+                    <select name="gender" id="gender" class="form-select" [(ngModel)]="extra_activities">
+                        <option value="1" selected>Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                
+                 <div class="col-lg-6 col-md-6 col-xs-12 mb-2">
+                    
+                 </div>
+                 <div class="col-lg-6 col-md-6 col-xs-12 mb-2">
+                    
+                 </div>
+                 <div class="col-lg-6 col-md-6 col-xs-12 mb-2 text-right">
+                    <button class="btn btn-primary" style="float: right !important;"  (click)="submit(content)">Submit</button>
+                 </div>
+            </div>
+        </div>
+
+        
+        <ng-template #content let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Prediction</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                    <div class="w-100 mb-3 text-center">
+                        <h3>{{prediction_output}}</h3>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </ng-template>
+    </div>
+
+    <!-- <div class="py-2 bg-white text-right">
+        <pagination-controls (pageChange)="pageChange($event)" id="foo" maxsize="5" [directionLinks]="true"></pagination-controls>
+    </div> -->
+    

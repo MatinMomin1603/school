@@ -219,6 +219,13 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                           }
                     ]
         },  
+        {
+          key: 'apps-prediction',
+          label: 'Result Prediction',
+          isTitle: false,
+          icon: 'book',
+          link: '/dashboard/prediction',
+      } 
     ];
     }else if(type.type == 'staff'){
       this.menuItems =  [
@@ -346,8 +353,14 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                         ],
                     },
                 ],
-        }
-        ,
+        },
+        {
+          key: 'apps-prediction',
+          label: 'Result Prediction',
+          isTitle: false,
+          icon: 'book',
+          link: '/dashboard/prediction',
+      }        ,
         // {
         //         key: 'apps-settings',
         //         label: 'Settings',
