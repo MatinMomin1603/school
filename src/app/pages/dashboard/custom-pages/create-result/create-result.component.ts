@@ -206,7 +206,6 @@ export class CreateResultComponent implements OnInit {
               }
             }
           };
-          console.log('table[this.tableKey[key]] :', table[this.tableKey[key]]);
           table[this.tableKey[key]].forEach((element1:any,key1:any) => {
             subtitle2 = {
               alignment: 'justify',
@@ -226,22 +225,54 @@ export class CreateResultComponent implements OnInit {
           data.push({image:'data:image/jpeg;base64,'+tempData.mark,width:400,style: 'margin_top'});
           data.push({text:'Attendance Performance-: ',style: 'margin_top2',pageBreak: 'before'});
           data.push({image:'data:image/jpeg;base64,'+tempData.attendance,width:400,style: 'margin_top'});
-          console.log('data :', data);
+          data.push(	{
+            style:'margin_top_left',
+            table: {
+              body: [
+                [{text: '*'+tempData.prediction,style:'margin_all'}],
+              ],
+            style: 'margin_top_left',
+
+            }
+          },)
             this.pdfDownload(data);
           }
         
           pdfDownload(data:any){
              
             var dd:any = {
-              pageSize: 'A4',
-                pageMargins: [15, 15, 15, 15],
-                pageOrientation: 'portrait',
+              // pageSize: 'A4',
+              //   pageMargins: [15, 15, 15, 15],
+              pageSize: 'LEGAL',
+              pageMargins: [15, 15, 15, 60],
+                // pageOrientation: 'portrait',
                 pageBreakBefore: 1,
-                  footer: {
-              columns: [
-                { text: "Little Heart's School Pethvadgaon, Kolhapur", alignment: 'center' }
-              ]
+            //       footer: {
+            //   columns: [
+            //     { text: "Little Heart's School Pethvadgaon, Kolhapur", alignment: 'center' }
+            //   ]
+            // },
+            footer:(currentPage:any, pageCount:any) => {
+              var t = {
+                layout: "noBorders",
+                fontSize: 12,
+                hieght: 100,
+                // bold: true,
+                margin: [25, 0, 25, 25],
+                table: {
+                  widths: ["*", "*"], 
+                  body: [
+                    [
+                      { text: "Signature of Class Teacher" ,style: ['bold_font','font_size'] },
+                      { text: "Signature of Principle",style: ['right','bold_font','font_size'] }
+                    ]
+                  ]
+                }
+              };
+        
+              return currentPage == pageCount ? t : '';
             },
+           
             content: data,
             styles: {
                 title: {
@@ -261,12 +292,30 @@ export class CreateResultComponent implements OnInit {
                 ,margin_top:{
                     margin:[0,20,0,0]
                 },
+                margin_top_left:{
+                  margin:[40,20,0,0]
+              },
                 margin_top2:{
                   margin:[0,50,0,0]
+              },
+                margin_bottom:{
+                  margin:[0,0,0,50]
               },
                 blank:{
                     color: 'white',
                     margin: [10,5,0,0]
+                }
+                ,right: {
+                  alignment: 'right'
+                },
+                bold_font:{
+                  bold: true
+                },
+                font_size:{
+                  fontSize: 12
+                },
+                margin_all:{
+                margin:[10,10,10,10]
                 }
             }
             

@@ -6,8 +6,8 @@ import { EventService } from './core/service/event.service';
 import { LayoutContainerComponent } from './layout/layout-container.component';
 
 
-// const rootRoute = loggedInUser() ? 'dashboard/students-info' : 'auth/login';
-const rootRoute = loggedInUser() ? 'dashboard/students-info' : 'dashboard/students-info';
+const rootRoute = loggedInUser() ? 'dashboard/students-info' : 'auth/login';
+// const rootRoute = loggedInUser() ? 'dashboard/students-info' : 'dashboard/students-info';
 
 const routes: Routes = [
   {
