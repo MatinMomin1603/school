@@ -20,6 +20,7 @@ export class StudentsInfoComponent implements OnInit {
   parent_number:any;
   date_of_admission:any;
   class_id:any;
+  academic_year:any;
   gender:any;
   last_name:any;
   first_name:any;
@@ -49,7 +50,8 @@ export class StudentsInfoComponent implements OnInit {
       "address": this.address,
       "gender":  this.gender,
       "date_of_admission": this.date_of_admission,
-      "class_id": this.class_id
+      "class_id": this.class_id,
+      "academic_year": this.academic_year
     }
 
     this.api.addStudent(data).subscribe((res:any)=>{
@@ -67,6 +69,7 @@ export class StudentsInfoComponent implements OnInit {
          this.gender = ''
          this.date_of_admission = '';
          this.class_id = '';
+         this.academic_year = '';
          this.currentFlow = 1;
       }
       else{
@@ -105,6 +108,7 @@ changeflow(item:any){
       this.gender = data.gender;
       this.date_of_admission = data.date_of_admission;
       this.class_id = data.class_id;
+      this.academic_year = data.academic_year;
       this._id = data._id
       this.currentFlow = 2;
       this.text = "Update Student"
@@ -145,6 +149,7 @@ changeflow(item:any){
         "gender":  this.gender,
         "date_of_admission": this.date_of_admission,
         "class_id": this.class_id,
+        "academic_year": this.academic_year,
         // "_id": this._id
       }
 

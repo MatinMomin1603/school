@@ -135,21 +135,16 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                 parentKey: 'apps-student-attendance',
             }
         ]
-  },
-        // {
-        //         key: 'apps-staff-attendance',
-        //         label: 'Staff Attendance',
-        //         isTitle: false,
-        //         icon: 'book',
-        //         link: '/dashboard/staff-attendance',
-        // },
-        // {
-        //         key: 'apps-fee-structure',
-        //         label: 'Fee Structure',
-        //         isTitle: false,
-        //         icon: 'book',
-        //         link: '/dashboard/fee-structure',
-        // },
+  }
+  ,{
+    key: 'apps-class-fee-structure',
+    label: 'Fee Structure',
+    isTitle: false,
+    icon: 'book',
+    link: '/dashboard/class-fee-structure',
+},
+
+  
         {
                 key: 'apps-other',
                 label: 'Others',
@@ -189,13 +184,6 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                 ],
         }
         ,
-        // {
-        //         key: 'apps-settings',
-        //         label: 'Settings',
-        //         isTitle: false,
-        //         icon: 'setting',
-        //         link: '/dashboard/setttings',
-        // },
           {
             key: 'apps-finance',
             label: 'Finance',
@@ -205,9 +193,9 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
             children: [
               {
                                   key: 'apps-fee-structure',
-                                  label: 'Fee Structure',
+                                  label: 'Student Fee Payment',
                                   icon: 'book',
-                                  link: '/dashboard/fee-structure',
+                                  link: '/dashboard/student-fee-payment',
                                   parentKey: 'apps-finance',
                           },
                                 {
@@ -235,15 +223,7 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
             isTitle: false,
             icon: 'user',
             link: '/dashboard/students-info',
-        }
-        // ,{
-        //     key: 'apps-member-of-staff',
-        //     label: 'Member Of Staff',
-        //     isTitle: false,
-        //     icon: 'users',
-        //     link: '/dashboard/staffs-info',
-        // }
-        ,
+        },
         {
             key: 'apps-result',
             label: 'Results',
@@ -265,20 +245,6 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                           icon: 'book',
                           parentKey: 'apps-result',
                       },
-                        // {
-                        //     key: 'apps-update-result',
-                        //     label: '  Update Result',
-                        //     link: '/dashboard/update-result',
-                        //     icon: 'book',
-                        //     parentKey: 'apps-result',
-                        // },
-                        // {
-                        //     key: 'apps-view-result',
-                        //     label: '  View Result',
-                        //     link: '/dashboard/view-result',
-                        //     icon: 'book',
-                        //     parentKey: 'apps-result',
-                        // },
                     ]
         },
         {
@@ -302,6 +268,13 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
             }
         ]
   },
+  {
+    key: 'apps-study-material',
+    label: 'Study Material',
+    isTitle: false,
+    icon: 'book',
+    link: '/dashboard/study-material',
+},
         {
                 key: 'apps-staff-attendance',
                 label: 'Staff Attendance',
@@ -309,13 +282,6 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                 icon: 'book',
                 link: '/dashboard/staff-attendance',
         },
-        // {
-        //         key: 'apps-fee-structure',
-        //         label: 'Fee Structure',
-        //         isTitle: false,
-        //         icon: 'book',
-        //         link: '/dashboard/fee-structure',
-        // },
         {
                 key: 'apps-other',
                 label: 'Others',
@@ -361,40 +327,9 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
           icon: 'book',
           link: '/dashboard/prediction',
       }        ,
-        // {
-        //         key: 'apps-settings',
-        //         label: 'Settings',
-        //         isTitle: false,
-        //         icon: 'setting',
-        //         link: '/dashboard/setttings',
-        // }
-        
-        //   {
-        //     key: 'apps-finance',
-        //     label: 'Finance',
-        //     isTitle: false,
-        //     icon: 'plus',
-        //     collapsed: true,
-        //     children: [
-        //                 {
-        //                     key: 'apps-invioces',
-        //                     label: 'Invioces',
-        //                     link: '/dashboard/invioces',
-        //                     icon: 'briefcase',
-        //                     parentKey: 'apps-finance',
-        //                 }
-        //             ]
-        // }
     ];
     }else{
       this.menuItems =  [
-      // {
-      //       key: 'apps-member-of-staff',
-      //       label: 'Member Of Staff',
-      //       isTitle: false,
-      //       icon: 'users',
-      //       link: '/dashboard/staffs-info',
-      //   },
         {
             key: 'apps-result',
             label: 'Results',
@@ -409,14 +344,6 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                             icon: 'book',
                             parentKey: 'apps-result',
                         },
-                       
-                        // {
-                        //     key: 'apps-view-result',
-                        //     label: '  View Result',
-                        //     link: '/dashboard/view-result',
-                        //     icon: 'book',
-                        //     parentKey: 'apps-result',
-                        // },
                     ]
         },
         {
@@ -432,92 +359,8 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                       link: '/dashboard/view-student-attendance',
                       parentKey: 'apps-student-attendance',
                   },
-                  // {
-                  //     key: 'apps-mark-attendance',
-                  //     label: '  Mark Attendance',
-                  //     link: '/dashboard/mark-student-attendance',
-                  //     parentKey: 'apps-student-attendance',
-                  // }
               ]
-        },
-        // {
-        //         key: 'apps-staff-attendance',
-        //         label: 'Staff Attendance',
-        //         isTitle: false,
-        //         icon: 'book',
-        //         link: '/dashboard/staff-attendance',
-        // },
-       
-        // {
-        //         key: 'apps-other',
-        //         label: 'Others',
-        //         isTitle: false,
-        //         icon: 'plus',
-        //         collapsed: true,
-        //         children: [
-        //             {
-        //                 key: 'apps-managements',
-        //                 label: '  Management',
-        //                 parentKey: 'apps-other',
-        //                 collapsed: true,
-        //                 icon: 'briefcase',
-        //                 children: [
-        //                     {
-        //                         key: 'apps-terms',
-        //                         label: 'Terms',
-        //                         link: '/dashboard/terms',
-        //                         parentKey: 'apps-managements',
-                                
-        //                     },
-        //                     {
-        //                         key: 'apps-class',
-        //                         label: 'Class',
-        //                         link: '/dashboard/classes',
-        //                         parentKey: 'apps-managements',
-                            
-        //                     },
-        //                     {
-        //                         key: 'apps-subject',
-        //                         label: 'Subject',
-        //                         link: '/dashboard/subjects',
-        //                         parentKey: 'apps-managements',
-        //                     },
-        //                 ],
-        //             },
-        //         ],
-        // }
-        // ,{
-        //         key: 'apps-settings',
-        //         label: 'Settings',
-        //         isTitle: false,
-        //         icon: 'setting',
-        //         link: '/dashboard/setttings',
-        // },
-          
-        //   {
-        //     key: 'apps-finance',
-        //     label: 'Finance',
-        //     isTitle: false,
-        //     icon: 'plus',
-        //     collapsed: true,
-        //     children: [
-        //                 {
-        //                   key: 'apps-fee-structure',
-        //                   label: 'Fee Structure',
-        //                   icon: 'book',
-        //                   link: '/dashboard/fee-structure',
-        //                   parentKey: 'apps-finance',
-        //           },
-        //                 {
-        //                   key: 'apps-pay-out',
-        //                   label: 'Pay Out',
-        //                   icon: 'book',
-        //                   link: '/dashboard/pay-out',
-        //                   parentKey: 'apps-finance',
-        //           },
-
-        //             ]
-        // }
+        }
     ];
     }
   }

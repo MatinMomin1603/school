@@ -17,8 +17,10 @@ export class ViewStudentAttendanceComponent implements OnInit {
   allStudents:any = [];
   currentFlow:any = 1; 
   class_id:any = '';
+  class_filter:any = '';
   allClasses:any = [];
   allStudentAtt:any = [];
+  allStudentAttClone:any = [];
   allStudentAttDate:any = [];
   currentUser:any = {};
   show_table:any = false;
@@ -43,6 +45,7 @@ this.api.getStdAttendanceView().subscribe((res:any)=>{
   Notiflix.Loading.remove();
   if(res.status){
       this.allStudentAtt = res.data;
+      this.allStudentAttClone = JSON.parse(JSON.stringify(res.data));
       this.allStudentAtt.forEach((element:any) => {
       element.show = false;
       });
@@ -81,6 +84,7 @@ this.api.getStdAttendanceView().subscribe((res:any)=>{
       Notiflix.Loading.remove();
       if(res.status){
           this.allStudentAtt = res.data;
+      this.allStudentAttClone = JSON.parse(JSON.stringify(res.data));
           this.allStudentAtt.forEach((element:any) => {
             if(element.status == 'present'){
                element.check = true
@@ -222,4 +226,18 @@ this.api.getStdAttendanceView().subscribe((res:any)=>{
     pdfMake.createPdf(dd).open();
   }
 
+  filerAttendance(filter_base_key:any){
+  console.log('filter_base_key :', filter_base_key);
+  this.allStudentAtt = JSON.parse(JSON.stringify(this.allStudentAttClone));
+
+    this.allStudentAtt = this.allStudentAtt.filter((element:any)=>  element[filter_base_key] == (filter_base_key == 'class_id' ? this.class_filter: this.date))
+    console.log('this.allStudentAtt :', this.allStudentAtt);
+
+  }
+
+  clearFilter(){
+    this.date = '';
+    this.class_filter = '';
+    this.allStudentAtt = JSON.parse(JSON.stringify(this.allStudentAttClone));
+  }
 }

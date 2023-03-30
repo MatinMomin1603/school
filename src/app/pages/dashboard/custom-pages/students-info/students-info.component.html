@@ -18,6 +18,7 @@
                         <th style="min-width: 65px;">Sr No</th>
                         <th style="min-width: 65px;">Roll No</th>
                         <th style="min-width: 200px">Full Name</th>
+                        <th style="min-width: 200px">Academic Year</th>
                         <th style="min-width: 150px">Current Class</th>
                         <th style="min-width: 150px">Gender</th>
                         <th style="min-width: 150px">Phone No</th>
@@ -42,6 +43,7 @@
                     <td>{{i + 1}}</td>
                     <td>{{item.roll_number}}</td>
                     <td>{{item.first_name + ' '+ item.middle_name + ' ' + item.last_name}}</td>
+                    <td>{{item.academic_year}}</td>
                     <td>{{item.class}}</td>
                     <td>{{item.gender}}</td>
                     <td>{{item.parent_number}}</td>
@@ -89,6 +91,20 @@
                     <input type="date" class="form-control" name="dob" [(ngModel)]="dob">
                  </div>
                  <div class="col-lg-6 col-md-6 col-xs-12 mb-2">
+                    <label for="current_class" class="mb-1 f-15">Current Academic Year</label>
+                     <select name="current_class" id="current_class" class="form-select" [(ngModel)]="academic_year">
+                         <option value="" selected hidden>Selcted Academic Year</option>
+                         <option value="2022-2023">2022-2023</option>
+                         <option value="2023-2024">2023-2024</option>
+                         <option value="2024-2025">2024-2025</option>
+                         <option value="2025-2026">2025-2026</option>
+                         <option value="2026-2027">2026-2027</option>
+                         <option value="2028-2029">2028-2029</option>
+                         <option value="2029-2030">2029-2030</option>
+                         <!-- <option *ngFor="let item of allClasses" value="{{item._id}}">{{item.name}}</option> -->
+                     </select>
+                 </div>
+                 <div class="col-lg-6 col-md-6 col-xs-12 mb-2">
                     <label for="current_class" class="mb-1 f-15">Current Class </label>
                      <select name="current_class" id="current_class" class="form-select" [(ngModel)]="class_id">
                          <option value="" selected hidden>Selcted Class</option>
@@ -110,7 +126,7 @@
                  <div class="col-lg-6 col-md-6 col-xs-12 mb-2">
                     
                  </div>
-                 <div class="col-lg-6 col-md-6 col-xs-12 mb-2">
+                 <div class="col-lg-6 col-md-6 col-xs-12 mb-2" style="text-align: end;">
                     <button class="btn btn-primary" *ngIf="text == 'Add New Student'" (click)="submit()">Add New Student</button>
                     <button class="btn btn-primary" *ngIf="text == 'Update Student'" (click)="update()">Update Student</button>
                  </div>

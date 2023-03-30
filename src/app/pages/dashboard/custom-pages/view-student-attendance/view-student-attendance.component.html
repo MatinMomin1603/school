@@ -7,11 +7,21 @@
     <div class="row w-100 p-3 bg-white mt-2" *ngIf="currentFlow == 1">
         <div class="w-100 d-flex justify-content-start mb-2">
             <div class="px-1 d-flex" *ngIf="currentUser.type != 'student'">
-                <!-- <div class="px-2">
-                    <label>* Choose Date For Attendance</label>
-                    <input type="date" class="form-control" [(ngModel)]="date">
-                </div>
-                <div class="px-2">
+              <div class="px-2">
+                    <label>* Choose Date For Filter Attendance</label>
+                    <input type="date" class="form-control" [(ngModel)]="date" (change)="filerAttendance('date')">
+                </div>  
+              <div class="px-2">
+                    <label>Class</label>
+                    <select name="current_class" id="current_class" class="form-select" [(ngModel)]="class_filter" (change)="filerAttendance('class_id')">
+                        <option value="" selected hidden>Filter By Class</option>
+                        <option *ngFor="let item of allClasses" value="{{item._id}}">{{item.name}}</option>
+                    </select>
+                </div>  
+              <div class="px-2">
+                   <button class="btn btn-primary" style="margin-top: 20px;" (click)="clearFilter()">Clear</button>
+                </div>  
+               <!--  <div class="px-2">
                     <label>Class</label>
                     <select name="current_class" id="current_class" class="form-select" [(ngModel)]="class_id">
                         <option value="" selected hidden>Selcted Class</option>

@@ -90,6 +90,18 @@ export class ApiServiceService {
     return this.http.post(EBase.Url+'/student/fees',JSON.stringify(data)).pipe(map(results => results));
   }
 
+  getClassFeeStructure(){
+    return this.http.get(EBase.Url+'/admin/fees').pipe(map(results => results));
+  }
+
+  addClassFeeStructure(data:any){
+    return this.http.post(EBase.Url+'/admin/fees',JSON.stringify(data)).pipe(map(results => results));
+  }
+
+  updateClassFeeStructure(data:any,_id:any){
+    return this.http.post(EBase.Url+'/admin/fees/update/'+_id,JSON.stringify(data)).pipe(map(results => results));
+  }
+
   updateFeeStructure(data:any){
     return this.http.post(EBase.Url+'/admin/update/fees'+data._id,JSON.stringify(data)).pipe(map(results => results));
   }

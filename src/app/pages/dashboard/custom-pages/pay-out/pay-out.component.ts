@@ -20,6 +20,7 @@ export class PayOutComponent implements OnInit {
   description:any = '';
   remain_fee:any = '';
   amount:any = '';
+  category:any = '';
   date:any = '';
   allPayout:any = [];
   currentData:any = {};
@@ -45,6 +46,7 @@ export class PayOutComponent implements OnInit {
      let data = {
       date: this.date,
       description: this.description,
+      category: this.category,
       amount: this.amount * 1
      }
      this.api.addPayOut(data).subscribe((res:any)=>{
@@ -65,6 +67,7 @@ export class PayOutComponent implements OnInit {
      _id : this.currentData._id,
      amount: this.amount,
      date: this.date,
+     category: this.category,
      description: this.description
     }
     this.api.updateFeeStructure(payload).subscribe((res:any)=>{
@@ -85,6 +88,7 @@ export class PayOutComponent implements OnInit {
     this.amount = '';
     this.date = '';
     this.description = '';
+    this.category = '';
     this.currentflow = 1;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
@@ -93,7 +97,8 @@ export class PayOutComponent implements OnInit {
     this.currentData= data;
     this.amount = data.amount;
     this.date = data.date;
-    this.description = data.description;
+    this.date = data.date;
+    this.category = data.category;
     this.currentflow = 2;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
@@ -106,10 +111,10 @@ export class PayOutComponent implements OnInit {
     // playground requires you to assign document definition to a variable called dd
     if(this.allPayout.length > 0){
       let bodyData:any = [
-        [{text: 'Sr No',style: 'tableHeader'},{text: 'Amount',style: 'tableHeader'},{text: 'Date',style: 'tableHeader'},{text: 'Desciption',style: 'tableHeader'}]
+        [{text: 'Sr No',style: 'tableHeader'},{text: 'Amount',style: 'tableHeader'},{text: 'Date',style: 'tableHeader'},{text: 'Category',style: 'tableHeader'},{text: 'Desciption',style: 'tableHeader'}]
       ];
       this.allPayout.forEach((element:any,key:any) => {
-        bodyData.push([key+1,element.amount ? element.amount : '',element.date ? element.date: '',element.description ? element.description: ''])
+        bodyData.push([key+1,element.amount ? element.amount : '',element.date ? element.date: '',element.category ? element.category : '',element.description ? element.description: ''])
       });
 
       this.pdfDownload(bodyData);
@@ -119,9 +124,9 @@ export class PayOutComponent implements OnInit {
 
   downloadSingleData(data:any){
     let bodyData:any = [
-      [{text: 'Sr No',style: 'tableHeader'},{text: 'Amount',style: 'tableHeader'},{text: 'Date',style: 'tableHeader'},{text: 'Desciption',style: 'tableHeader'}]
+      [{text: 'Sr No',style: 'tableHeader'},{text: 'Amount',style: 'tableHeader'},{text: 'Date',style: 'tableHeader'},{text: 'Category',style: 'tableHeader'},{text: 'Desciption',style: 'tableHeader'}]
     ];
-    bodyData.push(['1',data.amount ? data.amount : '',data.date ? data.date: '',data.description ? data.description: '']);
+    bodyData.push(['1',data.amount ? data.amount : '',data.date ? data.date: '',data.category ? data.category : '',data.description ? data.description: '']);
     
     this.pdfDownload(bodyData);
 
@@ -144,7 +149,7 @@ export class PayOutComponent implements OnInit {
         
         style: 'tableExample',
         table: {
-            widths: ['*','*','*','*'],
+            widths: ['*','*','*','*','*'],
           body: data,
         
         },

@@ -31,6 +31,8 @@ export class TopbarComponent implements OnInit {
   searchResults: SearchResultItem[] = [];
   searchUsers: SearchUserItem[] = [];
   balance:any;
+  total_collected:any;
+  total_expenses:any;
   currentUserName:any = {};
 
 
@@ -364,7 +366,9 @@ export class TopbarComponent implements OnInit {
   getBalance(){
     this.api.getBalance().subscribe((res:any)=>{
       if(res.status){
-        this.balance = res.data
+        this.balance = res.data;
+        this.total_collected = res.total_collected;
+        this.total_expenses = res.total_expenses;
       }
       else{
         Notiflix.Notify.failure('Balance Not Found..,Please Try Again')

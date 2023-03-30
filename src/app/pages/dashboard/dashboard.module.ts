@@ -28,6 +28,8 @@ import { ProfileComponent } from './custom-pages/profile/profile.component';
 import { ViewStudentAttendanceComponent } from './custom-pages/view-student-attendance/view-student-attendance.component';
 import { ClassPerformanceComponent } from './custom-pages/class-performance/class-performance.component';
 import { PredictionComponent } from './custom-pages/prediction/prediction.component';
+import { ClassFeeStructureComponent } from './custom-pages/class-fee-structure/class-fee-structure.component';
+import { StudyMaterialComponent } from './custom-pages/study-material/study-material.component';
 
 
 
@@ -53,7 +55,9 @@ import { PredictionComponent } from './custom-pages/prediction/prediction.compon
     ProfileComponent,
     ViewStudentAttendanceComponent,
     ClassPerformanceComponent,
-    PredictionComponent
+    PredictionComponent,
+    ClassFeeStructureComponent,
+    StudyMaterialComponent
   ],
   imports: [
     CommonModule,

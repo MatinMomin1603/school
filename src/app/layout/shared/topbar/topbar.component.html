@@ -262,10 +262,26 @@
             <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
         </div>
         <div class="modal-body">
-                <div class="w-100 mb-3">
-                    <label>Remaining Balance</label>
-                    <input type="text" class="form-control" [(ngModel)]="balance" disabled="true">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="w-100 mb-3">
+                        <label>Total Collected</label>
+                        <input type="text" class="form-control" [(ngModel)]="total_collected" disabled="true">
+                    </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="w-100 mb-3">
+                        <label>Total Expenses</label>
+                        <input type="text" class="form-control" [(ngModel)]="total_expenses" disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="w-100 mb-3">
+                        <label>Remaining Balance</label>
+                        <input type="text" class="form-control" [(ngModel)]="balance" disabled="true">
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
            

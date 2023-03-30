@@ -20,6 +20,8 @@ import { ProfileComponent } from './custom-pages/profile/profile.component';
 import { ViewStudentAttendanceComponent } from './custom-pages/view-student-attendance/view-student-attendance.component';
 import { ClassPerformanceComponent } from './custom-pages/class-performance/class-performance.component';
 import { PredictionComponent } from './custom-pages/prediction/prediction.component';
+import { ClassFeeStructureComponent } from './custom-pages/class-fee-structure/class-fee-structure.component';
+import { StudyMaterialComponent } from './custom-pages/study-material/study-material.component';
 
 
 const routes: Routes = [{
@@ -39,11 +41,13 @@ const routes: Routes = [{
 { path: 'mark-student-attendance',  component: StudentAttendanceComponent },
 { path: 'view-student-attendance',  component: ViewStudentAttendanceComponent },
 { path: 'staff-attendance',  component: StaffAttendanceComponent },
-{ path: 'fee-structure',  component: FeeStructureComponent },
 { path: 'pay-out',  component: PayOutComponent },
+{ path: 'student-fee-payment',  component: FeeStructureComponent },
+{ path: 'class-fee-structure',  component: ClassFeeStructureComponent },
 { path: 'profile',  component: ProfileComponent },
 { path: 'class-performance',  component: ClassPerformanceComponent },
 { path: 'prediction',  component: PredictionComponent },
+{ path: 'study-material',  component: StudyMaterialComponent },
 {
   path: 'analytics',
   loadChildren: () => import('./analytics/analytics.module').then(m => m.AnalyticsModule)
