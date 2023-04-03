@@ -30,6 +30,7 @@ import { ClassPerformanceComponent } from './custom-pages/class-performance/clas
 import { PredictionComponent } from './custom-pages/prediction/prediction.component';
 import { ClassFeeStructureComponent } from './custom-pages/class-fee-structure/class-fee-structure.component';
 import { StudyMaterialComponent } from './custom-pages/study-material/study-material.component';
+import { NoticeComponent } from './custom-pages/notice/notice.component';
 
 
 
@@ -57,7 +58,8 @@ import { StudyMaterialComponent } from './custom-pages/study-material/study-mate
     ClassPerformanceComponent,
     PredictionComponent,
     ClassFeeStructureComponent,
-    StudyMaterialComponent
+    StudyMaterialComponent,
+    NoticeComponent
   ],
   imports: [
     CommonModule,

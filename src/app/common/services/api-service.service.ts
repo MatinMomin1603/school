@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
 import {EBase} from "../../common/common";
 import { map } from 'rxjs/operators';
 const httpOptions:any = {
@@ -220,7 +220,22 @@ export class ApiServiceService {
 
   }
 
+  addNotice(data:any){
+    return this.http.post(EBase.Url+'/admin/notice',JSON.stringify(data)).pipe(map(results => results));
+  }
 
+  getNotices(data:any){
+    const encodedArray = data.map((str:any) => encodeURIComponent(str)).join(',');
+    const params = new HttpParams().set('type', encodedArray);
+    return this.http.get(EBase.Url+'/admin/notice',{params }).pipe(map(results => results));
+  }
 
+  addStudyMaterial(data:any){
+    return this.http.post(EBase.Url+'/staff/share',data).pipe(map(results => results));
+  }
+
+  getStudyMaterial(){
+    return this.http.get(EBase.Url+'/staff/study_material').pipe(map(results => results));
+  }
 
 }

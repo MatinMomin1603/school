@@ -22,6 +22,7 @@ import { ClassPerformanceComponent } from './custom-pages/class-performance/clas
 import { PredictionComponent } from './custom-pages/prediction/prediction.component';
 import { ClassFeeStructureComponent } from './custom-pages/class-fee-structure/class-fee-structure.component';
 import { StudyMaterialComponent } from './custom-pages/study-material/study-material.component';
+import { NoticeComponent } from './custom-pages/notice/notice.component';
 
 
 const routes: Routes = [{
@@ -48,6 +49,7 @@ const routes: Routes = [{
 { path: 'class-performance',  component: ClassPerformanceComponent },
 { path: 'prediction',  component: PredictionComponent },
 { path: 'study-material',  component: StudyMaterialComponent },
+{ path: 'notice',  component: NoticeComponent },
 {
   path: 'analytics',
   loadChildren: () => import('./analytics/analytics.module').then(m => m.AnalyticsModule)

@@ -183,6 +183,13 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                     },
                 ],
         }
+        ,{
+          key: 'apps-notice',
+          label: 'Notice',
+          isTitle: false,
+          icon: 'book',
+          link: '/dashboard/notice',
+      }
         ,
           {
             key: 'apps-finance',
@@ -321,6 +328,13 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                 ],
         },
         {
+          key: 'apps-notice',
+          label: 'Notice',
+          isTitle: false,
+          icon: 'book',
+          link: '/dashboard/notice',
+      },
+        {
           key: 'apps-prediction',
           label: 'Result Prediction',
           isTitle: false,
@@ -360,7 +374,14 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
                       parentKey: 'apps-student-attendance',
                   },
               ]
-        }
+        },
+        {
+          key: 'apps-notice',
+          label: 'Notice',
+          isTitle: false,
+          icon: 'book',
+          link: '/dashboard/notice',
+      }
     ];
     }
   }

@@ -9,8 +9,8 @@
         
         <div class="row w-100 p-3 bg-white mt-2" >
             <div class="w-100 d-flex justify-content-end mb-2">
-                <div class="px-1">
-                    <button class="btn btn-primary px-2" (click)="openModal(content)"><i class="fa fa-plus" aria-hidden="true" ></i> &nbsp; Add Study Materia3l</button>
+                <div class="px-1" *ngIf="currentUser.type == 'staff'">
+                    <button class="btn btn-primary px-2" (click)="openModal(content)"><i class="fa fa-plus" aria-hidden="true" ></i> &nbsp; Add Study Material</button>
                 </div>
                 <div class="px-1">
                 </div>
@@ -21,6 +21,8 @@
                         <tr style="border-bottom: 2px solid #e2e7f1 !important; background-color: #323742; color: #fff;">
                             <th style="min-width: 65px;">Sr No</th>
                             <th style="min-width: 200px">Class</th>
+                            <th style="min-width: 200px">Staff Name</th>
+                            <th style="min-width: 200px">Date</th>
                             <th >Action</th>
                         </tr>
                     </thead>
@@ -28,10 +30,18 @@
                        <tr *ngFor="let item of allMaterial; let i = index">
                         <td>{{i+1}}</td>
                         <td>{{item.class_name}}</td>
+                        <td>{{item.staff_name}}</td>
+                        <td>{{item.created_at | date: 'dd-MM-YYYY'}}</td>
                         <td class="d-flex">
                             <!-- <div class="icon-primary px-2 pointer" (click)="downloadIndiVidual(item)"><i class="fa fa-file-pdf icon-primary f-17"></i></div> -->
-                            <div class="icon-primary px-2 pointer"><i class="fa fa-edit icon-primary f-17"></i></div>
-                            <div class="icon-primary px-2 pointer"><i class="fa fa-download icon-primary f-17"></i></div>
+                            <!-- <div class="icon-primary px-2 pointer"><i class="fa fa-edit icon-primary f-17"></i></div> -->
+                            <div class="icon-primary px-2 pointer">
+                                <a href="{{item.file}}" target="_blank" download>
+                                        <i class="fa fa-download icon-primary f-17">
+
+                                        </i>
+                                    </a>
+                            </div>
                         </td>
                        </tr>
                     </tbody>
@@ -54,8 +64,12 @@
                         </select>
                     </div>
                     <div class="w-100 mb-3">
+                        <label>Description</label>
+                        <textarea class="form-control" cols="30" rows="4" [(ngModel)]="description"></textarea>
+                    </div>
+                    <div class="w-100 mb-3">
                         <label>Choose File</label>
-                       <input type="file" class="form-control" [(ngModel)]="file">
+                       <input type="file" class="form-control" [(ngModel)]="file" (change)="saveImage($event)" accept="image/*,.doc,.pdf,.docx">
                     </div>
             </div>
             <div class="modal-footer">
