@@ -13,7 +13,7 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 export class ViewStudentAttendanceComponent implements OnInit {
   @ViewChild('tableDetails') tableDetails !: ElementRef;
 
-  date:any;
+  date:any = '';
   allStudents:any = [];
   currentFlow:any = 1; 
   class_id:any = '';
@@ -228,11 +228,17 @@ this.api.getStdAttendanceView().subscribe((res:any)=>{
 
   filerAttendance(filter_base_key:any){
   console.log('filter_base_key :', filter_base_key);
-  this.allStudentAtt = JSON.parse(JSON.stringify(this.allStudentAttClone));
-
-    this.allStudentAtt = this.allStudentAtt.filter((element:any)=>  element[filter_base_key] == (filter_base_key == 'class_id' ? this.class_filter: this.date))
-    console.log('this.allStudentAtt :', this.allStudentAtt);
-
+  // this.allStudentAtt = JSON.parse(JSON.stringify(this.allStudentAttClone));
+  if(filter_base_key == 'class_id'){
+    this.allStudentAtt = this.allStudentAtt.filter((element:any)=>  element[filter_base_key] == this.class_filter)
+  }else{
+    console.log('this.date :', this.date);
+    this.allStudentAtt = this.allStudentAtt.filter((element:any)=> {
+      console.log('element[filter_base_key].split(\'-\')[1] :', element[filter_base_key].split('-')[1]);
+     return element[filter_base_key].split('-')[1] == this.date
+    } 
+    )
+  }
   }
 
   clearFilter(){

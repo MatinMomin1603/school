@@ -376,6 +376,13 @@ export class LeftSidebarComponent implements OnInit, AfterViewInit {
               ]
         },
         {
+          key: 'apps-study-material',
+          label: 'Study Material',
+          isTitle: false,
+          icon: 'book',
+          link: '/dashboard/study-material',
+      },
+        {
           key: 'apps-notice',
           label: 'Notice',
           isTitle: false,
