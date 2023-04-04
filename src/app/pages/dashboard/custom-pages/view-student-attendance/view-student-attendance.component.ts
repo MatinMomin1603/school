@@ -30,11 +30,12 @@ export class ViewStudentAttendanceComponent implements OnInit {
     // this.getStudents();
     this.currentUser = sessionStorage.getItem('currentUser');
     this.currentUser = JSON.parse(this.currentUser);
-    this.viewAttendance();
-  this.getClasses();
-  if(this.currentUser.type == 'student'){
-    this.getIndiStudentAtten(this.currentUser.data._id);
-  }
+    this.getClasses();
+    if(this.currentUser.type == 'student'){
+      this.getIndiStudentAtten(this.currentUser.data._id);
+    }else{
+      this.viewAttendance();
+    } 
 
   }
 
@@ -79,6 +80,7 @@ this.api.getStdAttendanceView().subscribe((res:any)=>{
   }
 
   getIndiStudentAtten(id:any){
+  console.log('id :', id);
     Notiflix.Loading.arrows();
     this.api.getIndiStudentAtten(id).subscribe((res:any)=>{
       Notiflix.Loading.remove();
